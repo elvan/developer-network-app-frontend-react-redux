@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { addExperience } from '../../actions/profile';
 
 const AddExperience = ({ addExperience, history }) => {
@@ -23,20 +24,20 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Add An Experience</h1>
-      <p className='lead'>
-        <i className='fas fa-code-branch' /> Add any developer/programming
-        positions that you have had in the past
+      <h1 class='large text-primary'>Add An Experience</h1>
+      <p class='lead'>
+        <i class='fas fa-code-branch' /> Add any developer/programming positions
+        that you have had in the past
       </p>
       <small>* = required field</small>
       <form
-        className='form'
+        class='form'
         onSubmit={(e) => {
           e.preventDefault();
           addExperience(formData, history);
         }}
       >
-        <div className='form-group'>
+        <div class='form-group'>
           <input
             type='text'
             placeholder='* Job Title'
@@ -46,7 +47,7 @@ const AddExperience = ({ addExperience, history }) => {
             required
           />
         </div>
-        <div className='form-group'>
+        <div class='form-group'>
           <input
             type='text'
             placeholder='* Company'
@@ -56,7 +57,7 @@ const AddExperience = ({ addExperience, history }) => {
             required
           />
         </div>
-        <div className='form-group'>
+        <div class='form-group'>
           <input
             type='text'
             placeholder='Location'
@@ -65,7 +66,7 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div className='form-group'>
+        <div class='form-group'>
           <h4>From Date</h4>
           <input
             type='date'
@@ -74,7 +75,7 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div className='form-group'>
+        <div class='form-group'>
           <p>
             <input
               type='checkbox'
@@ -89,7 +90,7 @@ const AddExperience = ({ addExperience, history }) => {
             Current Job
           </p>
         </div>
-        <div className='form-group'>
+        <div class='form-group'>
           <h4>To Date</h4>
           <input
             type='date'
@@ -99,7 +100,7 @@ const AddExperience = ({ addExperience, history }) => {
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
-        <div className='form-group'>
+        <div class='form-group'>
           <textarea
             name='description'
             cols='30'
@@ -109,8 +110,8 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
-        <a className='btn btn-light my-1' href='dashboard'>
+        <input type='submit' class='btn btn-primary my-1' />
+        <a class='btn btn-light my-1' href='dashboard.html'>
           Go Back
         </a>
       </form>
@@ -122,4 +123,4 @@ AddExperience.propTypes = {
   addExperience: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExperience })(AddExperience);
+export default connect(null, { addExperience })(withRouter(AddExperience));
